@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cake Order Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+        h2 { 
+            color: #5c2e00; 
+            text-shadow: 1px 1px 2px #fff; 
+        }
+        label, select, input {
+            margin: 8px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #888;
+        }
+        button {
+            background: #5c2e00;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover { background: #7a3c00; }
+        #bill {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: darkred;
+            background: #fff;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        img {
+            width: 150px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cake Order Bill Calculator</h1>
+
+    <label>Choose Cake:</label>
+    <select id="cake">
+        <option value="500">Chocolate Cake - ₹500</option>
+        <option value="400">Vanilla Cake - ₹400</option>
+        <option value="600">Red Velvet Cake - ₹600</option>
+        <option value="700">Black Forest Cake - ₹700</option>
+    </select><br>
+
+    <label>Quantity:</label>
+    <input type="number" id="qty" value="1" min="1"><br><br>
+
+    <button onclick="calculateBill()">Calculate Bill</button>
+    <div id="bill"></div>
+
+    <script>
+        function calculateBill() {
+            let price = parseFloat(document.getElementById("cake").value);
+            let qty = parseInt(document.getElementById("qty").value);
+            if (isNaN(qty) || qty <= 0) {
+                document.getElementById("bill").innerHTML = "Please enter valid quantity!";
+                return;
+            }
+            let total = price * qty;
+            document.getElementById("bill").innerHTML = "Total Bill Amount = ₹" + total;
+        }
+    </script>
+</body>
+</html>
